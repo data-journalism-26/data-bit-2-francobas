@@ -1,0 +1,258 @@
+<header class="hero">
+
+  <div>
+
+    <div class="kicker">
+      Hungary 2026 · Election polling
+    </div>
+
+    <h1>
+      Who watches the pollsters?
+    </h1>
+
+    <p class="dek">
+      The case of Orbán’s magic numbers.
+    </p>
+
+    <div class="byline">
+      By Franco Bastida · May 2026
+    </div>
+
+  </div>
+
+</header>
+
+<main class="story">
+
+  <section class="step">
+
+    <div class="step-text">
+
+      <div class="step-num">
+        Hungary · Election polling
+      </div>
+
+      <h2>
+        Orbán’s magic numbers
+      </h2>
+
+      <div class="text-columns">
+
+        <p>
+          Would Viktor Orbán attempt to shape the outcome of the election in
+          unprecedented ways? Before Hungary’s April 12 election, the question
+          hovered over the race after sixteen years of Orbán in power. Yet he
+          faced the strongest challenge of his political career.
+        </p>
+
+        <p>
+          Election night delivered a result far outside the expectations projected
+          by some pollsters. Orbán’s FIDESZ won just 39 percent of the vote,
+          while Péter Magyar’s center-right TISZA party secured more than
+          52 percent and a commanding parliamentary majority.
+        </p>
+
+        <p>
+          The fears of direct election interference quickly faded after the scale
+          of the result became clear. But the campaign left behind important
+          lessons: polling projections varied widely, and some consistently
+          portrayed the race as much tighter than it actually was.
+        </p>
+
+        <p>
+          A closer examination of polling data suggests that conflicts of interest
+          and partisan affiliations were not evenly distributed across the polling
+          industry. Some pollsters repeatedly published projections that favored
+          the outgoing FIDESZ government, even though their institutional
+          relationships were often publicly traceable and represented clear
+          conflicts of interest.
+        </p>
+
+      </div>
+    </div>
+
+    <figure class="toggle-figure">
+
+      <div class="chart-toggle">
+
+        <button class="toggle-btn active" onclick="showChart('with', event)">
+          Including conflicted pollsters
+        </button>
+
+        <button class="toggle-btn" onclick="showChart('without', event)">
+          Excluding conflicted pollsters
+        </button>
+
+      </div>
+
+      <img
+        id="polling-chart"
+        src="figures/hungary_trend_with_excluded.png"
+        alt="Hungary polling trend including conflict-flagged pollsters"
+      />
+
+      <figcaption id="polling-caption">
+        <strong>Including conflicted pollsters:</strong>
+        LOWESS-smoothed polling trends show several firms consistently projected
+        a substantially tighter race before election day.
+      </figcaption>
+
+    </figure>
+
+    <div class="step-text" style="margin-top:2rem;">
+
+      <div class="text-columns">
+
+        <p>
+          On one hand, Orbán’s magic numbers made the race look closer than it
+          actually was. On the other, the conflicts of interest were not exclusive
+          to his party alone. None of this necessarily proves coordinated
+          manipulation. Pollsters can miss predictions for many reasons, from
+          sampling error to turnout modeling.
+        </p>
+
+        <p>
+          But when institutional affiliations and political ties are publicly
+          verifiable and represent conflicts of interest, those relationships can
+          also be incorporated into election modeling and public analysis.
+        </p>
+
+        <p>
+          The broader question extends beyond Hungary. As elections become more
+          polarized, the line between creating a parallel political reality and
+          actual measurement grows increasingly muddled. Without stronger vetting
+          standards, voters will continue navigating campaigns where the numbers
+          themselves become part of the contest.
+        </p>
+
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="sources">
+
+    <h2>
+      Sources &amp; Methodology
+    </h2>
+
+    <ul>
+
+      <li>
+        <div class="source-group">
+          <strong>Polling data:</strong>
+          Wikipedia opinion polling table for the 2026 Hungarian parliamentary election.
+        </div>
+
+        <div class="links">
+          <a
+            href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Hungarian_parliamentary_election"
+            target="_blank"
+          >
+            Wikipedia polling table
+          </a>
+        </div>
+      </li>
+
+      <li>
+        <div class="source-group">
+          <strong>Modeling:</strong>
+          Polls were scraped by fieldwork date and firm, then standardized to the
+          final date of each polling period. Trendlines use LOWESS smoothing for
+          Fidesz-KDNP, TISZA, DK, MH and MKKP.
+        </div>
+      </li>
+
+      <li>
+        <div class="source-group">
+          <strong>Cutoff:</strong>
+          The analysis excludes polls whose fieldwork ended after April 5, 2026,
+          one week before election day.
+        </div>
+      </li>
+
+      <li>
+        <div class="source-group">
+          <strong>Pollster vetting:</strong>
+          A manually researched Excel checklist assessed 13 Hungarian polling
+          firms for potential conflicts of interest. The file included firm name,
+          conflict notes, yes/no removal flags and citation sources.
+        </div>
+      </li>
+
+      <li>
+        <div class="source-group">
+          <strong>Comparison:</strong>
+          Two datasets were created: one with all polls and one excluding firms
+          flagged for removal. The interactive toggle shows how vetting changes
+          the polling trend.
+        </div>
+      </li>
+
+      <li>
+        <div class="source-group">
+          <strong>Code:</strong>
+          Data scraping, cleaning, pollster matching and charting were done in Python.
+        </div>
+
+        <div class="links">
+          <a href="https://github.com/data-journalism-26/data-bit-2-francobas/blob/main/hungarian-pollsters.ipynb" target="_blank">
+            GitHub notebook
+          </a>
+        </div>
+      </li>
+
+    </ul>
+
+  </footer>
+
+</main>
+
+<script>
+
+  const chart = document.getElementById("polling-chart");
+  const caption = document.getElementById("polling-caption");
+  const buttons = document.querySelectorAll(".toggle-btn");
+
+  function showChart(view, event) {
+
+    chart.style.opacity = 0;
+
+    setTimeout(() => {
+
+      if (view === "with") {
+
+        chart.src =
+          "figures/hungary_trend_with_excluded.png";
+
+        chart.alt =
+          "Hungary polling trend including conflict-flagged pollsters";
+
+        caption.innerHTML =
+          "<strong>Including conflicted pollsters:</strong> LOWESS-smoothed polling trends show several firms consistently projected a substantially tighter race before election day.";
+
+      } else {
+
+        chart.src =
+          "figures/hungary_trend_without_excluded.png";
+
+        chart.alt =
+          "Hungary polling trend excluding conflict-flagged pollsters";
+
+        caption.innerHTML =
+          "<strong>Excluding conflicted pollsters:</strong> LOWESS-smoothed polling trends reveal a substantially wider TISZA lead before election day.";
+
+      }
+
+      buttons.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      event.target.classList.add("active");
+
+      chart.style.opacity = 1;
+
+    }, 120);
+  }
+
+</script>
