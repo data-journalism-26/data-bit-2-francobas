@@ -32,8 +32,8 @@ The project combines polling data scraped from Wikipedia, manually pollster vett
 ## Repository Structure
 
 ```text
-├── index.html                          # article & interactive layout
-├── README.md
+├── README.md                         
+├── index.html                         # article & layout
 ├── hungary-polling.ipynb              # scraping, modeling & chart notebook
 │
 ├── figures/
@@ -53,6 +53,7 @@ The project combines polling data scraped from Wikipedia, manually pollster vett
 - Polls whose fieldwork ended after April 5, 2026 were excluded to create a pre-election cutoff (one-week).
 - Two datasets were created:
   > one including all pollsters
+
   > one excluding firms flagged for conflicts of interest
 - Polling trends were smoothed using LOWESS averages rather than raw rolling means.
 
@@ -62,4 +63,4 @@ Note: The pollster vetting process relied on a manually researched Excel checkli
 
 ## GitHack view
 
-**[Read the article here](https://raw.githack.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/index.html)**
+**[Read the article here](https://raw.githack.com/data-journalism-26/data-bit-2-francobas/main/index.html)**
