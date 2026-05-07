@@ -169,7 +169,7 @@
     .sources{
       max-width:760px;
       margin:3rem auto 1rem;
-      padding:1.5rem 0 .5rem;
+      padding:.5rem 0 .5rem;
       border-top:2px solid var(--ink);
       font-size:.78rem;
       color:var(--muted);
@@ -294,7 +294,7 @@
 
         <p>But when institutional affiliations and political ties are publicly verifiable and represent conflicts of interest, those relationships can also be incorporated into election modeling and public analysis.</p>
 
-        <p>The broader question extends beyond Hungary. As elections become more polarized, the line between creating a parallel political reality and actual measurement grows increasingly muddled. Without stronger vetting standards, voters will continue navigating campaigns where the numbers themselves become part of the contest.</p>
+        <p>The broader question extends beyond Hungary. As elections become more polarized, the line between creating a parallel political reality and actual measurement grows increasingly muddled. Without stronger vetting standards, voters will continue navigating campaigns where the make up itself becomes part of the contest.</p>
       </div>
     </section>
 
@@ -371,11 +371,11 @@
         if (view === "with") {
           chart.src = "figures/hungary_trend_with_excluded.png";
           chart.alt = "Hungary polling trend including conflict-flagged pollsters";
-          caption.innerHTML = "<strong>Including conflicted pollsters:</strong> LOWESS-smoothed polling trends show several firms consistently projected a substantially tighter race before election day.";
+          caption.innerHTML = "<strong>Including conflicted pollsters:</strong> LOWESS-smoothed polling trends up to one week before the election.";
         } else {
           chart.src = "figures/hungary_trend_without_excluded.png";
           chart.alt = "Hungary polling trend excluding conflict-flagged pollsters";
-          caption.innerHTML = "<strong>Excluding conflicted pollsters:</strong> LOWESS-smoothed polling trends reveal a substantially wider TISZA lead before election day.";
+          caption.innerHTML = "<strong>Excluding conflicted pollsters:</strong> LOWESS-smoothed polling trends up to one week before the election.";
         }
 
         buttons.forEach(btn => btn.classList.remove("active"));
