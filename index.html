@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who watches the pollsters?</title>
+
+  <style>
+    :root{
+      --bg:#f7f7f7;
+      --ink:#222;
+      --muted:#666;
+      --rule:#d8d8d8;
+      --blue:#0077cc;
+      --card:#ffffff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Arial, Helvetica, sans-serif;
+      line-height:1.55;
+    }
+
+    .hero{
+      max-width:760px;
+      margin:0 auto;
+      padding:4rem 1.25rem 2.5rem;
+      text-align:center;
+    }
+
+    .kicker{
+      font-size:.82rem;
+      font-weight:700;
+      color:#444;
+      margin-bottom:1rem;
+    }
+
+    h1{
+      font-size:clamp(2.8rem,6vw,4.7rem);
+      line-height:1.04;
+      letter-spacing:-.045em;
+      font-weight:800;
+      margin-bottom:1.25rem;
+    }
+
+    .dek{
+      font-size:1.25rem;
+      line-height:1.35;
+      color:#333;
+      max-width:680px;
+      margin:0 auto;
+    }
+
+    .byline{
+      margin-top:1.4rem;
+      color:#444;
+      font-size:.88rem;
+      line-height:1.6;
+    }
+
+    .story{
+      max-width:920px;
+      margin:0 auto;
+      padding:0 1.25rem 4rem;
+    }
+
+    .step{
+      border-top:1px solid var(--rule);
+      padding:2rem 0 1rem;
+    }
+
+    .step-text{
+      max-width:760px;
+      margin:0 auto 2rem;
+    }
+
+    .step-num{
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:700;
+      color:#777;
+      margin-bottom:.75rem;
+    }
+
+    .step h2{
+      font-size:2rem;
+      line-height:1.12;
+      letter-spacing:-.025em;
+      font-weight:800;
+      margin-bottom:.85rem;
+    }
+
+    .step p{
+      font-family:Georgia, "Times New Roman", serif;
+      font-size:1.12rem;
+      line-height:1.6;
+      color:#222;
+      margin-bottom:1.15rem;
+    }
+
+    figure{
+      width:100%;
+      max-width:860px;
+      margin:2rem auto;
+      background:white;
+      border-top:1px solid var(--rule);
+      border-bottom:1px solid var(--rule);
+      padding:1.25rem 0;
+    }
+
+    figure img{
+      display:block;
+      width:100%;
+      max-width:820px;
+      margin:0 auto;
+      height:auto;
+    }
+
+    figcaption{
+      max-width:820px;
+      margin:.85rem auto 0;
+      padding-top:.75rem;
+      border-top:1px solid #e5e5e5;
+      font-size:.78rem;
+      line-height:1.45;
+      color:var(--muted);
+    }
+
+    figcaption strong{color:var(--ink)}
+
+    .chart-toggle{
+      display:flex;
+      gap:.5rem;
+      justify-content:center;
+      margin-bottom:1rem;
+      flex-wrap:wrap;
+    }
+
+    .toggle-btn{
+      border:1.5px solid var(--ink);
+      background:#fff;
+      color:var(--ink);
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.045em;
+      padding:.55rem .8rem;
+      cursor:pointer;
+    }
+
+    .toggle-btn:hover{
+      background:#eaeaea;
+    }
+
+    .toggle-btn.active{
+      background:var(--ink);
+      color:white;
+    }
+
+    .toggle-figure img{
+      transition:opacity .18s ease;
+    }
+
+    .sources{
+      max-width:760px;
+      margin:3rem auto 1rem;
+      padding:.5rem 0 .5rem;
+      border-top:2px solid var(--ink);
+      font-size:.78rem;
+      color:var(--muted);
+    }
+
+    .sources h2{
+      font-size:.75rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#555;
+      margin-bottom:1rem;
+    }
+
+    .sources ul{
+      list-style:none;
+    }
+
+    .sources li{
+      padding:.65rem 0;
+      border-bottom:1px solid #ddd;
+      line-height:1.45;
+    }
+
+    .source-group{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:.82rem;
+      color:#333;
+      margin-bottom:.15rem;
+    }
+
+    .links{
+      font-size:.75rem;
+    }
+
+    .sources a{
+      color:var(--blue);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .sources a:hover{
+      text-decoration:underline;
+    }
+
+    @media(max-width:800px){
+      .hero{
+        padding:3rem 1.1rem 2rem;
+      }
+
+      h1{
+        font-size:clamp(2.5rem,13vw,4rem);
+      }
+
+      .step p{
+        font-size:1.05rem;
+      }
+
+      figure{
+        padding:1rem 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <div class="kicker">Hungary 2026 · Election polling</div>
+
+    <h1>Who watches the pollsters?</h1>
+
+    <p class="dek">The case of Orbán’s magic numbers.</p>
+
+    <div class="byline">
+      By <strong>Franco Bastida</strong><br>
+      Filed under <u>Hungary 2026</u><br>
+      Published May 2026
+    </div>
+  </header>
+
+  <main class="story">
+    <section class="step">
+      <div class="step-text">
+        <div class="step-num">Hungary · Election polling</div>
+
+        <h2>Orbán’s magic numbers</h2>
+
+        <p>Would Viktor Orbán attempt to shape the outcome of the election in unprecedented ways? Before Hungary’s April 12 election, the question hovered over the race after sixteen years of Orbán in power. Yet he faced the strongest challenge of his political career.</p>
+
+        <p>Election night delivered a result far outside the expectations projected by some pollsters. Orbán’s FIDESZ won just 39 percent of the vote, while Péter Magyar’s center-right TISZA party secured more than 52 percent and a commanding parliamentary majority.</p>
+
+        <p>The fears of direct election interference quickly faded after the scale of the result became clear. But the campaign left behind important lessons: polling projections varied widely, and some consistently portrayed the race as much tighter than it actually was.</p>
+
+        <p>A closer examination of polling data suggests that conflicts of interest and partisan affiliations were not evenly distributed across the polling industry. Some pollsters repeatedly published projections that favored the outgoing FIDESZ government, even though their institutional relationships were often publicly traceable and represented clear conflicts of interest.</p>
+      </div>
+
+      <figure class="toggle-figure">
+        <div class="chart-toggle">
+          <button class="toggle-btn active" onclick="showChart('with', this)">
+            Including conflicted pollsters
+          </button>
+
+          <button class="toggle-btn" onclick="showChart('without', this)">
+            Excluding conflicted pollsters
+          </button>
+        </div>
+
+        <img
+          id="polling-chart"
+          src="figures/hungary_trend_with_excluded.png"
+          alt="Hungary polling trend including conflict-flagged pollsters"
+        />
+
+        <figcaption id="polling-caption">
+          <strong>Including conflicted pollsters:</strong>
+          LOWESS-smoothed polling trends show several firms consistently projected
+          a substantially tighter race before election day.
+        </figcaption>
+      </figure>
+
+      <div class="step-text">
+        <p>On one hand, Orbán’s magic numbers made the race look closer than it actually was. On the other, the conflicts of interest were not exclusive to his party alone. None of this necessarily proves coordinated manipulation. Pollsters can miss predictions for many reasons, from sampling error to turnout modeling.</p>
+
+        <p>But when institutional affiliations and political ties are publicly verifiable and represent conflicts of interest, those relationships can also be incorporated into election modeling and public analysis.</p>
+
+        <p>The broader question extends beyond Hungary. As elections become more polarized, the line between creating a parallel political reality and actual measurement grows increasingly muddled. Without stronger vetting standards, voters will continue navigating campaigns where the make up itself becomes part of the contest.</p>
+      </div>
+    </section>
+
+    <footer class="sources">
+      <h2>Sources &amp; Methodology</h2>
+
+      <ul>
+        <li>
+          <div class="source-group">
+            <strong>Polling data:</strong>
+            Wikipedia opinion polling table for the 2026 Hungarian parliamentary election.
+          </div>
+
+          <div class="links">
+            <a href="https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Hungarian_parliamentary_election" target="_blank">
+              Wikipedia polling table
+            </a>
+          </div>
+        </li>
+
+        <li>
+          <div class="source-group">
+            <strong>Modeling:</strong>
+            Polls were scraped by fieldwork date and firm, then standardized to the final date of each polling period. Trendlines use LOWESS smoothing for Fidesz-KDNP, TISZA, DK, MH and MKKP.
+          </div>
+        </li>
+
+        <li>
+          <div class="source-group">
+            <strong>Cutoff:</strong>
+            The analysis excludes polls whose fieldwork ended after April 5, 2026, one week before election day.
+          </div>
+        </li>
+
+        <li>
+          <div class="source-group">
+            <strong>Pollster vetting:</strong>
+            A manually researched Excel checklist assessed 13 Hungarian polling firms for potential conflicts of interest. The file included firm name, conflict notes, yes/no removal flags and citation sources.
+          </div>
+        </li>
+
+        <li>
+          <div class="source-group">
+            <strong>Comparison:</strong>
+            Two datasets were created: one with all polls and one excluding firms flagged for removal. The interactive toggle shows how vetting changes the polling trend.
+          </div>
+        </li>
+
+        <li>
+          <div class="source-group">
+            <strong>Code:</strong>
+            Data scraping, cleaning, pollster matching and charting were done in Python.
+          </div>
+
+          <div class="links">
+            <a href="https://github.com/data-journalism-26/data-bit-2-francobas/blob/main/hungarian-pollsters.ipynb" target="_blank">
+              GitHub notebook
+            </a>
+          </div>
+        </li>
+      </ul>
+    </footer>
+  </main>
+
+  <script>
+    const chart = document.getElementById("polling-chart");
+    const caption = document.getElementById("polling-caption");
+    const buttons = document.querySelectorAll(".toggle-btn");
+
+    function showChart(view, activeButton) {
+      chart.style.opacity = 0;
+
+      setTimeout(() => {
+        if (view === "with") {
+          chart.src = "figures/hungary_trend_with_excluded.png";
+          chart.alt = "Hungary polling trend including conflict-flagged pollsters";
+          caption.innerHTML = "<strong>Including conflicted pollsters:</strong> LOWESS-smoothed polling trends up to one week before the election.";
+        } else {
+          chart.src = "figures/hungary_trend_without_excluded.png";
+          chart.alt = "Hungary polling trend excluding conflict-flagged pollsters";
+          caption.innerHTML = "<strong>Excluding conflicted pollsters:</strong> LOWESS-smoothed polling trends up to one week before the election.";
+        }
+
+        buttons.forEach(btn => btn.classList.remove("active"));
+        activeButton.classList.add("active");
+        chart.style.opacity = 1;
+      }, 120);
+    }
+  </script>
+</body>
+</html>
